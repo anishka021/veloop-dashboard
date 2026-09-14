@@ -1,0 +1,106 @@
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.glowOrb1, .glowOrb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.glowOrb1 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent 70%);
+  top: -100px; left: 10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.glowOrb2 {
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(74, 144, 226, 0.25), transparent 70%);
+  top: 20px; right: 10%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold);
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  max-width: 620px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.desktopBr { display: inline; }
+@media (max-width: 640px) { .desktopBr { display: none; } }
+
+.statsStrip {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.statPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(82, 196, 26, 0.1);
+  border: 1px solid rgba(82, 196, 26, 0.3);
+  color: var(--green);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 40px 16px 24px; }
+}

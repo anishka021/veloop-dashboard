@@ -1,0 +1,138 @@
+.card {
+  background: linear-gradient(135deg, #16192b 0%, #1c2038 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  animation: fadeInUp 0.6s ease-out 0.55s both;
+  transition: border-color 0.3s;
+  height: 100%;
+}
+
+.card:hover { border-color: rgba(82, 196, 26, 0.25); }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title svg { color: var(--green); }
+
+.viewAll {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.viewAll:hover { color: var(--gold); }
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: all 0.25s;
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.item:hover {
+  background: rgba(82, 196, 26, 0.05);
+  border-color: rgba(82, 196, 26, 0.2);
+  transform: translateX(4px);
+}
+
+.itemIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(82, 196, 26, 0.12);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itemBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.itemSource {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemTime {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.itemAmount {
+  color: var(--green);
+  font-weight: 800;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(82, 196, 26, 0.3);
+}
+
+.empty {
+  text-align: center;
+  padding: 32px 0;
+  color: var(--text-secondary);
+}
+
+.empty svg {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.empty p { margin: 8px 0 16px; font-size: 0.9rem; }
+
+.emptyBtn {
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #0f1120;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 0.85rem;
+}
+
+.emptyBtn:hover { transform: translateY(-2px); }

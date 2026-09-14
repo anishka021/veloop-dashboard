@@ -1,0 +1,125 @@
+.result {
+  text-align: center;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trophyWrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.trophyGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, transparent 70%);
+  filter: blur(20px);
+}
+
+.trophy {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.trophy.high {
+  animation: celebrate 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes celebrate {
+  0% { transform: scale(0) rotate(-180deg); }
+  60% { transform: scale(1.25) rotate(12deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 16px 0;
+}
+
+.scoreBox {
+  width: 100%;
+  max-width: 260px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.scoreLabel {
+  font-size: 0.68rem;
+  color: #6b7080;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.scoreValue {
+  font-size: 2.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.rewardBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.08));
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.replayBtn {
+  background: transparent;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+  padding: 11px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.replayBtn:hover {
+  background: #d4af37;
+  color: #0f1120;
+  transform: translateY(-2px);
+}
+
+.note {
+  font-size: 0.68rem;
+  color: #6b7080;
+  margin: 14px 0 0;
+  font-style: italic;
+}

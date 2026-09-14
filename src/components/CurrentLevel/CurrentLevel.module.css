@@ -1,0 +1,165 @@
+.card {
+  background: linear-gradient(135deg, #16192b 0%, #1c2038 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(212, 175, 55, 0.08);
+}
+
+.shine {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  position: relative;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.badgeIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  position: relative;
+}
+
+.badgeIconWrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent);
+  opacity: 0;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.badgeText { display: flex; flex-direction: column; gap: 2px; }
+
+.levelLabel {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.levelNum {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.levelNamePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--gold);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.xpSection { margin-bottom: 20px; }
+
+.xpHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.xpLabel {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.infoIcon {
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.infoIcon:hover { color: var(--gold); }
+
+.xpValue {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.xpUnit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footerValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.footerLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}

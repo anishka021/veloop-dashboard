@@ -1,0 +1,124 @@
+.start {
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.illustration {
+  position: relative;
+  height: 110px;
+  width: 110px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb1, .orb2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+}
+
+.orb1 {
+  width: 70px; height: 70px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.5), transparent 70%);
+}
+
+.orb2 {
+  width: 50px; height: 50px;
+  background: radial-gradient(circle, rgba(244, 208, 63, 0.4), transparent 70%);
+}
+
+.coinMain {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.05));
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  position: relative;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.gameTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.desc {
+  color: #a0a4b8;
+  font-size: 0.9rem;
+  margin: 0 0 24px 0;
+  max-width: 340px;
+  line-height: 1.5;
+}
+
+.rules {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #a0a4b8;
+}
+
+.rule svg { color: #d4af37; }
+
+.ruleDivider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.startBtn {
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #0f1120;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
+}
+
+.startBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+}
+
+.note {
+  color: #6b7080;
+  font-size: 0.72rem;
+  margin: 16px 0 0;
+}
