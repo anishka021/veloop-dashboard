@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './GamePlay.module.css';
-import { Coins } from 'lucide-react';
 
 const GAME_DURATION = 20;
 
@@ -19,15 +18,12 @@ const GamePlay = ({ onComplete }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCoins(prev => [
-        ...prev,
-        {
-          id: Date.now() + Math.random(),
-          x: Math.random() * 88 + 6,
-          y: -10,
-          speed: 2.5 + Math.random() * 2,
-        }
-      ]);
+      setCoins(prev => [...prev, {
+        id: Date.now() + Math.random(),
+        x: Math.random() * 88 + 6,
+        y: -10,
+        speed: 2.5 + Math.random() * 2,
+      }]);
     }, 650);
     return () => clearInterval(interval);
   }, []);
@@ -91,18 +87,12 @@ const GamePlay = ({ onComplete }) => {
       </div>
 
       {coins.map(coin => (
-        <div
-          key={coin.id}
-          className={styles.coin}
-          style={{ left: `${coin.x}%`, top: `${coin.y}%` }}
-        >
-          <Coins size={28} strokeWidth={1.5} />
+        <div key={coin.id} className={styles.coin} style={{ left: `${coin.x}%`, top: `${coin.y}%` }}>
+          🪙
         </div>
       ))}
 
-      <div className={styles.player} style={{ left: `${playerX}%` }}>
-        <div className={styles.playerBasket}>🧺</div>
-      </div>
+      <div className={styles.player} style={{ left: `${playerX}%` }}>🧺</div>
     </div>
   );
 };
