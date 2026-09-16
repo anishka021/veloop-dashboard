@@ -44,4 +44,13 @@ const NextLevelReward = () => {
       </div>
 
       <div className={styles.rewardProgressWrap}>
-        <div className={
+        <div className={styles.miniProgress}>
+          <div className={styles.miniFill} style={{ width: '80%' }} />
+        </div>
+        <span className={styles.rewardPercent}>80%</span>
+      </div>
+    </div>
+  );
+};
+
+export default NextLevelReward;
