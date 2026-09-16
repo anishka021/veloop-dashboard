@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .trophyWrap {
   position: relative;
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,21 +21,23 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
   filter: blur(20px);
+  animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
 .trophy {
-  width: 92px;
-  height: 92px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
-  border: 2px solid rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.08));
+  border: 3px solid rgba(212, 175, 55, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #d4af37;
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+  font-size: 50px;
+  animation: heartbeat 2s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
 }
 
 .trophy.high {
@@ -48,78 +51,21 @@
 }
 
 .title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: #fff;
   margin: 0 0 16px 0;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .scoreBox {
   width: 100%;
   max-width: 260px;
   background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px 20px;
   margin-bottom: 16px;
 }
 
 .scoreLabel {
-  font-size: 0.68rem;
-  color: #6b7080;
-  letter-spacing: 2px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.scoreValue {
-  font-size: 2.6rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-.rewardBox {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.08));
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  color: #d4af37;
-  padding: 12px 24px;
-  border-radius: 14px;
-  font-weight: 800;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-.replayBtn {
-  background: transparent;
-  border: 1.5px solid rgba(212, 175, 55, 0.5);
-  color: #d4af37;
-  padding: 11px 28px;
-  border-radius: 12px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.replayBtn:hover {
-  background: #d4af37;
-  color: #0f1120;
-  transform: translateY(-2px);
-}
-
-.note {
-  font-size: 0.68rem;
-  color: #6b7080;
-  margin: 14px 0 0;
-  font-style: italic;
-}
