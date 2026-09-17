@@ -61,10 +61,9 @@
 .mascot {
   position: relative;
   display: inline-block;
-  font-size: 80px;
   margin-bottom: 16px;
-  animation: jump 2s ease-in-out infinite;
-  filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4));
+  animation: jump 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.5));
   cursor: pointer;
 }
 
@@ -74,13 +73,56 @@
 
 .mascotSparkle {
   position: absolute;
-  font-size: 20px;
+  font-size: 22px;
   animation: sparklePop 1.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.s1 { top: 0; right: -10px; animation-delay: 0s; }
-.s2 { top: 30%; left: -15px; animation-delay: 0.5s; }
-.s3 { bottom: 0; right: -5px; animation-delay: 1s; }
+.s1 { top: 0; right: -15px; animation-delay: 0s; }
+.s2 { top: 30%; left: -20px; animation-delay: 0.5s; }
+.s3 { bottom: 0; right: -10px; animation-delay: 1s; }
+.s4 { top: -10px; left: 0; animation-delay: 0.3s; font-size: 16px; }
+
+.speechBubble {
+  position: absolute;
+  top: -20px;
+  right: -220px;
+  background: linear-gradient(135deg, #fff, #f0f0f0);
+  color: #0a0d1a;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: bounce 2s ease-in-out infinite;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  font-family: 'Fredoka', sans-serif;
+  z-index: 10;
+}
+
+.speechBubble::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+  border-left: 0;
+}
+
+@media (max-width: 768px) {
+  .speechBubble {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -60px;
+    font-size: 0.72rem;
+    padding: 8px 14px;
+  }
+}
 
 .badge {
   display: inline-flex;
@@ -112,14 +154,13 @@
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(2rem, 5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 18px;
-  letter-spacing: -0.5px;
   color: #fff;
   animation: bounceIn 0.8s ease-out 0.4s both;
-  font-family: 'Fredoka', 'Inter', sans-serif;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .gradientText {
@@ -141,15 +182,12 @@
 
 .subtitle {
   color: var(--text-2);
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   max-width: 620px;
   margin: 0 auto 28px;
   line-height: 1.6;
   animation: fadeInUp 0.8s ease-out 0.5s both;
 }
-
-.desktopBr { display: inline; }
-@media (max-width: 640px) { .desktopBr { display: none; } }
 
 .statsStrip {
   display: flex;
@@ -175,19 +213,34 @@
 
 .statPill:hover { transform: translateY(-4px) scale(1.05); }
 
-.green {
-  background: rgba(82, 196, 26, 0.1);
-  border-color: rgba(82, 196, 26, 0.3);
-  color: var(--green);
+.green { background: rgba(82, 196, 26, 0.1); border-color: rgba(82, 196, 26, 0.3); color: var(--green); }
+.gold { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.3); color: var(--gold); }
+.purple { background: rgba(142, 108, 201, 0.1); border-color: rgba(142, 108, 201, 0.3); color: var(--purple); }
+
+.quoteBox {
+  margin-top: 24px;
+  padding: 16px 24px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  display: inline-block;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
 }
 
-.gold {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: rgba(212, 175, 55, 0.3);
+.quoteText {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  font-style: italic;
+  transition: opacity 0.3s;
+}
+
+.quoteText.fading { opacity: 0; }
+.quoteText :global(strong) {
   color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
 }
 
 @media (max-width: 640px) {
   .hero { padding: 30px 16px 20px; }
-  .mascot { font-size: 60px; }
 }
