@@ -6,7 +6,7 @@ const SparkleTrail = () => {
 
     const handleMouseMove = (e) => {
       const now = Date.now();
-      if (now - lastTime < 80) return;
+      if (now - lastTime < 100) return;
       lastTime = now;
 
       const sparkle = document.createElement('div');
