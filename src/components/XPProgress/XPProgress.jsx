@@ -13,12 +13,12 @@ const XPProgress = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.bar}>
-        <div className={styles.fill} style={{ width: `${progress}%` }}>
-          <div className={styles.fillShine} />
-        </div>
+        <div className={styles.fill} style={{ width: `${progress}%` }} />
       </div>
       <div className={styles.labels}>
-        <span className={styles.current}><strong>{levelData.currentXP.toLocaleString()}</strong> XP</span>
+        <span className={styles.current}>
+          <strong>{levelData.currentXP.toLocaleString()}</strong> XP
+        </span>
         <span className={styles.percent}>{progress}%</span>
         <span className={styles.target}>{levelData.requiredXP.toLocaleString()} XP</span>
       </div>
