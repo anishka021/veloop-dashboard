@@ -16,10 +16,12 @@
 }
 
 .title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
   color: #fff;
   font-family: 'Fredoka', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .legend {
@@ -36,9 +38,9 @@
   display: inline-block;
 }
 
-.completed { background: var(--green); box-shadow: 0 0 8px rgba(82, 196, 26, 0.6); }
-.current { background: var(--gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
-.locked { background: var(--text-3); }
+.legend .completed { background: var(--green); box-shadow: 0 0 8px rgba(82, 196, 26, 0.6); }
+.legend .current { background: var(--gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
+.legend .locked { background: var(--text-3); }
 
 .roadmapWrap {
   overflow-x: auto;
@@ -59,7 +61,7 @@
   align-items: center;
   gap: 10px;
   position: relative;
-  min-width: 118px;
+  min-width: 130px;
   padding: 12px 8px;
   border-radius: 16px;
   transition: all 0.3s ease;
@@ -90,8 +92,8 @@
 
 .nodeOuter {
   position: relative;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,32 +108,28 @@
 }
 
 .node {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
   border: 2px solid;
   background: #0a0d1a;
-  font-family: 'Fredoka', sans-serif;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
 .completed .node {
-  background: linear-gradient(135deg, rgba(82, 196, 26, 0.25), rgba(82, 196, 26, 0.05));
+  background: linear-gradient(135deg, rgba(82, 196, 26, 0.25), rgba(82, 196, 26, 0.08));
   border-color: var(--green);
-  color: var(--green);
   box-shadow: 0 0 20px rgba(82, 196, 26, 0.4);
 }
 
 .current .node {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.35), rgba(212, 175, 55, 0.08));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.35), rgba(212, 175, 55, 0.1));
   border-color: var(--gold);
-  color: var(--gold);
-  transform: scale(1.12);
+  transform: scale(1.15);
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
   animation: heartbeat 1.5s ease-in-out infinite;
 }
@@ -144,9 +142,8 @@
 }
 
 .next .node {
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.25), rgba(74, 144, 226, 0.05));
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.25), rgba(74, 144, 226, 0.08));
   border-color: var(--blue);
-  color: var(--blue);
   box-shadow: 0 0 20px rgba(74, 144, 226, 0.4);
   animation: bounce 2.5s ease-in-out infinite;
 }
@@ -154,7 +151,11 @@
 .locked .node {
   background: rgba(107, 112, 128, 0.1);
   border-color: rgba(107, 112, 128, 0.4);
-  color: var(--text-3);
+}
+
+.locked .node :global(svg) {
+  opacity: 0.4;
+  filter: grayscale(1);
 }
 
 .info { text-align: center; }
@@ -172,7 +173,7 @@
 .next .levelLabel { color: var(--blue); }
 
 .levelName {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-2);
   font-weight: 600;
   margin-bottom: 4px;
@@ -201,7 +202,7 @@
 .connector {
   width: 44px;
   height: 2px;
-  margin-bottom: 76px;
+  margin-bottom: 88px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -227,6 +228,6 @@
 @media (max-width: 640px) {
   .card { padding: 20px; }
   .legend { display: none; }
-  .item { min-width: 104px; }
+  .item { min-width: 108px; }
   .connector { width: 30px; }
 }
