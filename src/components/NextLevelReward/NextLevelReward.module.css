@@ -63,53 +63,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  animation: heartbeat 2.5s ease-in-out infinite;
+}
+
+.chestWrap.wiggle {
+  animation: wiggle 0.4s ease-in-out 3;
 }
 
 .chestGlow {
   position: absolute;
-  width: 140px; height: 140px;
+  width: 180px; height: 180px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, transparent 70%);
   filter: blur(20px);
   animation: pulseGlow 2.5s ease-in-out infinite;
-}
-
-.chest {
-  width: 110px; height: 110px;
-  border-radius: 32px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.08));
-  border: 3px solid rgba(212, 175, 55, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  position: relative;
-  animation: heartbeat 2s ease-in-out infinite;
-  box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.3), 0 0 50px rgba(212, 175, 55, 0.4);
-  font-size: 54px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.chest:hover { transform: scale(1.05); }
-
-.chest.wiggle {
-  animation: wiggle 0.4s ease-in-out 3;
-}
-
-.chestEyes {
-  position: absolute;
-  top: 20px;
-  display: flex;
-  gap: 12px;
-}
-
-.chestEye {
-  width: 8px; height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
-  animation: blink 3s ease-in-out infinite;
 }
 
 .rewardAmount {
@@ -119,7 +87,7 @@
 }
 
 .num {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 800;
   background: linear-gradient(135deg, #fff, #d4af37);
   -webkit-background-clip: text;
