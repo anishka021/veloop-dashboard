@@ -87,7 +87,11 @@ const GamePlay = ({ onComplete }) => {
       </div>
 
       {coins.map(coin => (
-        <div key={coin.id} className={styles.coin} style={{ left: `${coin.x}%`, top: `${coin.y}%` }}>
+        <div
+          key={coin.id}
+          className={styles.coin}
+          style={{ left: `${coin.x}%`, top: `${coin.y}%` }}
+        >
           🪙
         </div>
       ))}
