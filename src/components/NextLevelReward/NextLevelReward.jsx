@@ -1,13 +1,36 @@
 import React, { useState } from 'react';
 import styles from './NextLevelReward.module.css';
+import { CartoonChest } from '../Icons/SvgIcons';
 import { levelData } from '../../data/levelData';
 
 const NextLevelReward = () => {
   const [wiggling, setWiggling] = useState(false);
 
-  const handleChestClick = () => {
+  const handleChestClick = (e) => {
     setWiggling(true);
     setTimeout(() => setWiggling(false), 1200);
+
+    // Confetti burst
+    const emojis = ['🎉','🎊','🪙','💎','⭐','🏆','🎁'];
+    for (let i = 0; i < 20; i++) {
+      const c = document.createElement('div');
+      c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      c.style.position = 'fixed';
+      c.style.left = e.clientX + 'px';
+      c.style.top = e.clientY + 'px';
+      c.style.pointerEvents = 'none';
+      c.style.zIndex = '9999';
+      c.style.fontSize = '20px';
+      c.style.transition = 'all 1s ease-out';
+      document.body.appendChild(c);
+      const angle = (Math.PI * 2 * i) / 20;
+      const distance = 100 + Math.random() * 150;
+      setTimeout(() => {
+        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1.5) rotate(720deg)`;
+        c.style.opacity = '0';
+      }, 10);
+      setTimeout(() => c.remove(), 1100);
+    }
   };
 
   return (
@@ -20,18 +43,12 @@ const NextLevelReward = () => {
       </div>
 
       <div className={styles.rewardVisual}>
-        <div className={styles.chestWrap}>
+        <div
+          className={`${styles.chestWrap} ${wiggling ? styles.wiggle : ''}`}
+          onClick={handleChestClick}
+        >
           <div className={styles.chestGlow} />
-          <div
-            className={`${styles.chest} ${wiggling ? styles.wiggle : ''}`}
-            onClick={handleChestClick}
-          >
-            <div className={styles.chestEyes}>
-              <div className={styles.chestEye} />
-              <div className={styles.chestEye} />
-            </div>
-            🎁
-          </div>
+          <CartoonChest size={140} />
         </div>
         <div className={styles.rewardAmount}>
           <span className={styles.num}>{levelData.nextLevelReward.amount}</span>
