@@ -1,16 +1,76 @@
-# React + Vite
+# VELOOP Rewards — Level-Up Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Project Overview
+Premium gamified rewards dashboard with XP progression, mini-game, and earning hub.
 
-Currently, two official plugins are available:
+## Level System
+Users progress through levels by earning XP...
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## XP System
+Current XP, required XP, progress visualization...
 
-## React Compiler
+## Next-Level Rewards
+Locked reward card with chest illustration...
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Game Concept
+VE Coin Catch — a skill-based mini-game...
 
-## Expanding the Oxlint configuration
+## Game Rules
+- Objective: Catch coins
+- Duration: 20 seconds
+- Reward: Score-based XP
+- Eligibility: All users
+- Attempts: Unlimited (demo)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Earning Features
+- Daily Challenge
+- Watch & Earn
+- Refer & Earn
+- Play & Earn
+
+## Technology Stack
+React.js, Vite, Bootstrap, CSS Modules, React Hooks, Lucide React
+
+## Installation
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+## Development Commands
+- `npm run dev` — Start dev server
+- `npm run build` — Production build
+- `npm run preview` — Preview build
+
+## Folder Structure
+\`\`\`
+src/
+├── components/
+├── pages/
+├── data/
+└── assets/
+\`\`\`
+
+## Component Architecture
+List all components...
+
+## Responsive Behavior
+Mobile (320px+), Tablet (768px+), Desktop (1440px+)
+
+## Animation Details
+- Fade in up
+- Bounce in
+- Heartbeat
+- Sparkle effects
+
+## Screenshots
+[Add screenshots here]
+
+## Live Demo
+https://veloop-dashboard-ruby.vercel.app
+
+## GitHub Repository
+https://github.com/anishka021/veloop-dashboard
+
+## Author
+Anishka [Your Full Name]
