@@ -16,7 +16,7 @@ const GameContainer = () => {
     <div className={styles.card}>
       <div className={styles.header}>
         <div className={styles.title}>🎮 Play & Earn</div>
-        <div className={styles.tag}>Daily Challenge</div>
+        <div className={styles.tag}>🔥 Daily Challenge</div>
       </div>
 
       {gameState === 'start' && <GameStart onStart={handleStart} />}
