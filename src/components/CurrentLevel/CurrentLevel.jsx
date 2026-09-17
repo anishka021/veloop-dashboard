@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CurrentLevel.module.css';
 import XPProgress from '../XPProgress/XPProgress';
+import { LevelBadgeIcon } from '../Icons/SvgIcons';
 import { levelData } from '../../data/levelData';
 
 const CurrentLevel = () => {
@@ -31,10 +32,14 @@ const CurrentLevel = () => {
 
       <div className={styles.levelHeader}>
         <div className={styles.levelBadge}>
-          <div className={styles.badgeIconWrap}>🏅</div>
+          <div className={styles.badgeIconWrap}>
+            <LevelBadgeIcon size={48} />
+          </div>
           <div className={styles.badgeText}>
             <span className={styles.levelLabel}>CURRENT LEVEL</span>
-            <span className={styles.levelNum}>Level {String(levelData.currentLevel).padStart(2, '0')}</span>
+            <span className={styles.levelNum}>
+              Level {String(levelData.currentLevel).padStart(2, '0')}
+            </span>
           </div>
         </div>
         <div className={styles.levelNamePill}>⚡ {levelData.currentLevelName}</div>
@@ -54,7 +59,9 @@ const CurrentLevel = () => {
       <div className={styles.levelFooter}>
         <div>
           <div className={styles.footerValue}>{levelData.xpRemaining.toLocaleString()}</div>
-          <div className={styles.footerLabel}>XP to Level {String(levelData.nextLevel).padStart(2, '0')}</div>
+          <div className={styles.footerLabel}>
+            XP to Level {String(levelData.nextLevel).padStart(2, '0')}
+          </div>
         </div>
       </div>
     </div>
