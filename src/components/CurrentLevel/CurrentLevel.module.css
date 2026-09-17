@@ -66,20 +66,32 @@
 }
 
 .badgeIconWrap {
-  width: 56px; height: 56px;
-  border-radius: 18px;
+  width: 64px; height: 64px;
+  border-radius: 20px;
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
   border: 2px solid rgba(212, 175, 55, 0.5);
-  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   animation: heartbeat 2s ease-in-out infinite;
-  font-size: 26px;
+  position: relative;
 }
 
-.badgeText { display: flex; flex-direction: column; gap: 2px; }
+.badgeIconWrap::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 24px;
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  animation: spinSlow 10s linear infinite;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 
 .levelLabel {
   font-size: 0.65rem;
@@ -89,7 +101,7 @@
 }
 
 .levelNum {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
   font-family: 'Fredoka', sans-serif;
@@ -123,7 +135,7 @@
 }
 
 .xpValue {
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
   color: #fff;
   display: flex;
@@ -138,7 +150,7 @@
   color: #f4d03f;
   animation: sparklePop 1.5s ease-in-out infinite;
   align-self: center;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .xpUnit {
@@ -158,11 +170,12 @@
 }
 
 .footerValue {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--gold);
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
   font-family: 'Fredoka', sans-serif;
+  animation: textGlow 2s ease-in-out infinite;
 }
 
 .footerLabel {
