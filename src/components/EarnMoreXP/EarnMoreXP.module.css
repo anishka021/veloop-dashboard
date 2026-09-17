@@ -9,18 +9,20 @@
 .header { margin-bottom: 24px; }
 
 .title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
   color: #fff;
   margin-bottom: 4px;
   font-family: 'Fredoka', sans-serif;
 }
 
-.subtitle { color: var(--text-2); font-size: 0.85rem; }
+.subtitle {
+  color: var(--text-2);
+  font-size: 0.85rem;
+}
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
 }
 
@@ -46,15 +48,16 @@
 }
 
 .iconWrap {
-  width: 52px; height: 52px;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
-  font-size: 26px;
   transition: transform 0.3s;
   animation: bounce 2.5s ease-in-out infinite;
+  position: relative;
 }
 
 .card:hover .iconWrap {
@@ -62,31 +65,15 @@
   animation: wiggle 0.5s ease-in-out infinite;
 }
 
-.gold .iconWrap {
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-}
-
-.blue .iconWrap {
-  background: rgba(74, 144, 226, 0.12);
-  border: 1px solid rgba(74, 144, 226, 0.25);
-}
-
-.green .iconWrap {
-  background: rgba(82, 196, 26, 0.12);
-  border: 1px solid rgba(82, 196, 26, 0.25);
-}
-
-.purple .iconWrap {
-  background: rgba(142, 108, 201, 0.12);
-  border: 1px solid rgba(142, 108, 201, 0.25);
-}
+.gold .iconWrap { background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); }
+.blue .iconWrap { background: rgba(74, 144, 226, 0.15); border: 1px solid rgba(74, 144, 226, 0.3); }
+.green .iconWrap { background: rgba(82, 196, 26, 0.15); border: 1px solid rgba(82, 196, 26, 0.3); }
+.purple .iconWrap { background: rgba(142, 108, 201, 0.15); border: 1px solid rgba(142, 108, 201, 0.3); }
 
 .cardTitle {
   font-size: 1rem;
   color: #fff;
   margin: 0 0 6px 0;
-  font-weight: 700;
   font-family: 'Fredoka', sans-serif;
 }
 
