@@ -1,0 +1,184 @@
+.card {
+  background: linear-gradient(135deg, rgba(22, 25, 43, 0.95), rgba(28, 32, 56, 0.85));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 28px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  animation: bounceIn 0.8s ease-out 0.2s both;
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 60px rgba(212, 175, 55, 0.15);
+}
+
+.shine {
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cornerTL, .cornerBR {
+  position: absolute;
+  width: 24px; height: 24px;
+  border-color: rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card:hover .cornerTL,
+.card:hover .cornerBR { opacity: 1; }
+
+.cornerTL {
+  top: 10px; left: 10px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 8px;
+}
+
+.cornerBR {
+  bottom: 10px; right: 10px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-bottom-right-radius: 8px;
+}
+
+.levelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.badgeIconWrap {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  animation: heartbeat 2s ease-in-out infinite;
+  position: relative;
+}
+
+.badgeIconWrap::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 24px;
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  animation: spinSlow 10s linear infinite;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.levelLabel {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--text-3);
+  font-weight: 700;
+}
+
+.levelNum {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.levelNamePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--gold);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.xpSection { margin-bottom: 20px; }
+
+.xpHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: var(--text-2);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.xpValue {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.xpSparkle {
+  color: #f4d03f;
+  animation: sparklePop 1.5s ease-in-out infinite;
+  align-self: center;
+  font-size: 22px;
+}
+
+.xpUnit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.levelFooter {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerValue {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  font-family: 'Fredoka', sans-serif;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+.footerLabel {
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
