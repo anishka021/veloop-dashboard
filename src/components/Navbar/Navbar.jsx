@@ -6,20 +6,18 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const dropdownRef = useRef(null);
 
   const menuItems = [
-    { label: '🏠 Dashboard', path: '/' },
-    { label: '🎮 Games', path: '/games' },
-    { label: '🎁 Rewards', path: '/rewards' },
-    { label: '🏆 Achievements', path: '/achievements' },
-    { label: '👥 Refer', path: '/refer' },
+    { icon: '🏠', label: 'Dashboard', subtitle: 'Level & XP', path: '/' },
+    { icon: '🎮', label: 'Games', subtitle: 'Play & Earn', path: '/games' },
+    { icon: '🎁', label: 'Rewards', subtitle: 'Unlock Now', path: '/rewards' },
+    { icon: '🏆', label: 'Achievements', subtitle: 'Badges', path: '/achievements' },
+    { icon: '👥', label: 'Refer', subtitle: 'Earn More', path: '/refer' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -32,14 +30,13 @@ const Navbar = () => {
 
   const handleLogout = () => {
     setShowDropdown(false);
-    // Clear any stored session data
     localStorage.removeItem('veloop_user');
     localStorage.removeItem('veloop_token');
 
-    // Confetti burst effect
-    for (let i = 0; i < 20; i++) {
+    // Confetti
+    for (let i = 0; i < 25; i++) {
       const c = document.createElement('div');
-      const emojis = ['👋', '✨', '🌟', '💫', '🎉'];
+      const emojis = ['👋', '✨', '🌟', '💫', '🎉', '⭐'];
       c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       c.style.position = 'fixed';
       c.style.left = '50%';
@@ -49,19 +46,15 @@ const Navbar = () => {
       c.style.zIndex = '9999';
       c.style.transition = 'all 1.2s ease-out';
       document.body.appendChild(c);
-
-      const angle = (Math.PI * 2 * i) / 20;
+      const angle = (Math.PI * 2 * i) / 25;
       const distance = 150 + Math.random() * 150;
-
       setTimeout(() => {
-        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) rotate(720deg)`;
         c.style.opacity = '0';
       }, 10);
-
       setTimeout(() => c.remove(), 1300);
     }
 
-    // Show logout message
     setTimeout(() => {
       alert('👋 You have been logged out successfully!\n\nSee you soon at VELOOP Rewards!');
     }, 500);
@@ -69,7 +62,7 @@ const Navbar = () => {
 
   const handleNavigate = (path) => {
     navigate(path);
-    setShowMobileMenu(false);
+    setShowDropdown(false);
   };
 
   return (
@@ -86,7 +79,11 @@ const Navbar = () => {
             className={`${styles.navLink} ${isActive(item.path) ? styles.active : ''}`}
             onClick={() => handleNavigate(item.path)}
           >
-            {item.label}
+            <span className={styles.navIcon}>{item.icon}</span>
+            <span className={styles.navText}>
+              <span>{item.label}</span>
+              <span className={styles.navSubtitle}>{item.subtitle}</span>
+            </span>
           </a>
         ))}
       </div>
@@ -149,26 +146,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-
-        <div className={styles.menuBtn} onClick={() => setShowMobileMenu(!showMobileMenu)}>
-          {showMobileMenu ? '✕' : '☰'}
-        </div>
       </div>
-
-      {/* Mobile Menu */}
-      {showMobileMenu && (
-        <div className={styles.mobileMenu}>
-          {menuItems.map((item) => (
-            <a
-              key={item.path}
-              className={`${styles.mobileLink} ${isActive(item.path) ? styles.mobileActive : ''}`}
-              onClick={() => handleNavigate(item.path)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      )}
     </nav>
   );
 };
