@@ -1,17 +1,12 @@
-/* ===== GLOBAL RESET ===== */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== REMOVE ALL UNDERLINES FROM LINKS ===== */
-a,
-a:hover,
-a:focus,
-a:active,
-a:visited {
-  text-decoration: none important;
+/* Navbar links - remove underline */
+nav a,
+nav a:hover,
+nav a:focus,
+nav a:active,
+nav a:visited {
+  text-decoration: none !important;
   color: inherit;
   outline: none;
   border-bottom: none;
@@ -22,12 +17,13 @@ button {
   text-decoration: none;
   border: none;
   outline: none;
+  background: none;
 }
 
 button:hover,
 button:focus,
 button:active {
-  text-decoration: none;
+  text-decoration: none !important;
   outline: none;
 }
 
