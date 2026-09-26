@@ -11,7 +11,7 @@ a:hover,
 a:focus,
 a:active,
 a:visited {
-  text-decoration: none !important;
+  text-decoration: none important;
   color: inherit;
   outline: none;
   border-bottom: none;
