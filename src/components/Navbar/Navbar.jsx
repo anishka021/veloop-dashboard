@@ -6,7 +6,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const dropdownRef = useRef(null);
 
   const menuItems = [
@@ -29,21 +28,14 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on page change
-  useEffect(() => {
-    setShowMobileMenu(false);
-  }, [location.pathname]);
-
   const handleLogout = () => {
     setShowDropdown(false);
-    setShowMobileMenu(false);
     localStorage.removeItem('veloop_user');
     localStorage.removeItem('veloop_token');
 
-    // Confetti
+    const emojis = ['👋', '✨', '🌟', '💫', '🎉', '⭐'];
     for (let i = 0; i < 25; i++) {
       const c = document.createElement('div');
-      const emojis = ['👋', '✨', '🌟', '💫', '🎉', '⭐'];
       c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       c.style.position = 'fixed';
       c.style.left = '50%';
@@ -67,34 +59,27 @@ const Navbar = () => {
     }, 500);
   };
 
-  const handleNavigate = (path) => {
-    navigate(path);
-    setShowDropdown(false);
-    setShowMobileMenu(false);
-  };
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarInner}>
-        <div className={styles.navLogo} onClick={() => handleNavigate('/')}>
+        <div className={styles.navLogo} onClick={() => navigate('/')}>
           <div className={styles.logoIcon}>💎</div>
           <span className={styles.logoText}>VELOOP</span>
         </div>
 
-        {/* Desktop Menu */}
         <div className={styles.navMenu}>
           {menuItems.map((item) => (
-            <a
+            <button
               key={item.path}
-              className={`${styles.navLink} ${isActive(item.path) ? styles.active : ''}`}
-              onClick={() => handleNavigate(item.path)}
+              className={`${styles.navBtn} ${isActive(item.path) ? styles.active : ''}`}
+              onClick={() => navigate(item.path)}
             >
-              <span className={styles.navIcon}>{item.icon}</span>
-              <span className={styles.navText}>
-                <span className={styles.navLabel}>{item.label}</span>
-                <span className={styles.navSubtitle}>{item.subtitle}</span>
+              <span className={styles.navBtnIcon}>{item.icon}</span>
+              <span className={styles.navBtnText}>
+                <span className={styles.navBtnLabel}>{item.label}</span>
+                <span className={styles.navBtnSub}>{item.subtitle}</span>
               </span>
-            </a>
+            </button>
           ))}
         </div>
 
@@ -126,22 +111,22 @@ const Navbar = () => {
 
                 <div className={styles.dropdownDivider}></div>
 
-                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Profile page coming soon!'); }}>
+                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Profile coming soon!'); }}>
                   <span className={styles.dropdownIcon}>👤</span>
                   <span>My Profile</span>
                 </div>
 
-                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Settings page coming soon!'); }}>
+                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Settings coming soon!'); }}>
                   <span className={styles.dropdownIcon}>⚙️</span>
                   <span>Settings</span>
                 </div>
 
-                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Wallet page coming soon!'); }}>
+                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Wallet coming soon!'); }}>
                   <span className={styles.dropdownIcon}>💼</span>
                   <span>My Wallet</span>
                 </div>
 
-                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Notifications page coming soon!'); }}>
+                <div className={styles.dropdownItem} onClick={() => { setShowDropdown(false); alert('Notifications coming soon!'); }}>
                   <span className={styles.dropdownIcon}>🔔</span>
                   <span>Notifications</span>
                   <span className={styles.dropdownBadge}>3</span>
@@ -156,50 +141,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
-          {/* Hamburger Menu Button */}
-          <button
-            className={styles.menuBtn}
-            onClick={() => setShowMobileMenu(!showMobileMenu)}
-            aria-label="Toggle menu"
-          >
-            {showMobileMenu ? '✕' : '☰'}
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {showMobileMenu && (
-        <div className={styles.mobileMenu}>
-          {menuItems.map((item) => (
-            <a
-              key={item.path}
-              className={`${styles.mobileLink} ${isActive(item.path) ? styles.mobileActive : ''}`}
-              onClick={() => handleNavigate(item.path)}
-            >
-              <span className={styles.mobileIcon}>{item.icon}</span>
-              <span className={styles.mobileText}>
-                <span className={styles.mobileLabel}>{item.label}</span>
-                <span className={styles.mobileSubtitle}>{item.subtitle}</span>
-              </span>
-              <span className={styles.mobileArrow}>→</span>
-            </a>
-          ))}
-
-          <div className={styles.mobileDivider}></div>
-
-          <a
-            className={`${styles.mobileLink} ${styles.mobileLogout}`}
-            onClick={handleLogout}
-          >
-            <span className={styles.mobileIcon}>🚪</span>
-            <span className={styles.mobileText}>
-              <span className={styles.mobileLabel}>Logout</span>
-              <span className={styles.mobileSubtitle}>Sign out</span>
-            </span>
-          </a>
-        </div>
-      )}
     </nav>
   );
 };

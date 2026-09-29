@@ -1,379 +1,169 @@
 .card {
-  background: linear-gradient(135deg,
-    rgba(35, 25, 55, 0.98) 0%,
-    rgba(45, 30, 70, 0.95) 50%,
-    rgba(35, 25, 55, 0.98) 100%);
+  background: linear-gradient(135deg, rgba(35, 25, 15, 0.95) 0%, rgba(50, 38, 22, 0.92) 50%, rgba(35, 25, 15, 0.95) 100%);
   backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1.5px solid rgba(255, 107, 203, 0.5);
-  border-radius: 30px;
-  padding: 32px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  border: 1.5px solid rgba(255, 217, 61, 0.4);
+  border-radius: 24px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: bounceIn 0.9s ease-out 0.3s both;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(255, 107, 203, 0.25),
-    0 0 120px rgba(255, 217, 61, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 217, 61, 0.15);
+  margin-bottom: 20px;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(255, 107, 203, 0.8);
-  box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.6),
-    0 0 120px rgba(255, 107, 203, 0.5),
-    0 0 180px rgba(255, 217, 61, 0.3);
+  transform: translateY(-6px);
+  border-color: rgba(255, 217, 61, 0.7);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 100px rgba(255, 217, 61, 0.3);
 }
 
-/* ===== BACKGROUND GLOWS ===== */
-.bgGlow1 {
+.cardGlow1 {
   position: absolute;
-  top: -120px;
-  left: -120px;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 203, 0.6), transparent 70%);
-  filter: blur(80px);
-  opacity: 0.7;
-  pointer-events: none;
-  animation: glowPulse 5s ease-in-out infinite;
-}
-
-.bgGlow2 {
-  position: absolute;
-  bottom: -120px;
-  right: -120px;
-  width: 400px;
-  height: 400px;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 217, 61, 0.5), transparent 70%);
-  filter: blur(80px);
+  filter: blur(70px);
   opacity: 0.6;
   pointer-events: none;
-  animation: glowPulse 6s ease-in-out infinite reverse;
+  animation: glowPulse 4s ease-in-out infinite;
 }
 
-.gridBg {
+.cardGlow2 {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 107, 203, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 217, 61, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+  bottom: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 203, 0.5), transparent 70%);
+  filter: blur(70px);
+  opacity: 0.4;
   pointer-events: none;
-  mask-image: radial-gradient(circle at 50% 50%, black, transparent 85%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 85%);
-  opacity: 0.6;
+  animation: glowPulse 5s ease-in-out infinite reverse;
 }
 
-.glowTop {
-  position: absolute;
-  top: -1px;
-  left: 15%;
-  right: 15%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6bcb, #ffd93d, #ff6bcb, transparent);
-  filter: blur(2px);
-  box-shadow: 0 0 25px #ff6bcb;
-  opacity: 0.9;
-}
+.cardContent { position: relative; z-index: 3; }
 
-/* ===== CORNER BRACKETS ===== */
-.cornerTL, .cornerBR {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  border-color: rgba(255, 107, 203, 0.7);
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-.cornerTL {
-  top: 14px;
-  left: 14px;
-  border-top: 2.5px solid;
-  border-left: 2.5px solid;
-  border-top-left-radius: 10px;
-}
-
-.cornerBR {
-  bottom: 14px;
-  right: 14px;
-  border-bottom: 2.5px solid;
-  border-right: 2.5px solid;
-  border-bottom-right-radius: 10px;
-}
-
-/* ===== HEADER ===== */
-.header {
+.levelHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 3;
 }
 
-.headerLeft {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.lockIcon {
-  font-size: 1rem;
-  filter: drop-shadow(0 0 12px rgba(255, 107, 203, 0.9));
-  animation: heartbeat 2s ease-in-out infinite;
-}
-
-.label {
-  font-size: 0.75rem;
+.levelHeaderLabel {
+  font-size: 0.7rem;
   letter-spacing: 2.5px;
   color: #ff6bcb;
   font-weight: 900;
-  text-shadow: 0 0 20px rgba(255, 107, 203, 0.8);
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(255, 107, 203, 0.6);
 }
 
 .infoIcon {
-  color: #b8bcd0;
-  cursor: pointer;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  transition: opacity 0.2s;
-}
-
-.infoIcon:hover {
-  opacity: 1;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 107, 203, 0.15);
+  border: 1.5px solid rgba(255, 107, 203, 0.5);
   color: #ff6bcb;
-}
-
-/* ===== REWARD VISUAL ===== */
-.rewardVisual {
-  flex: 1;
+  font-size: 0.8rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: 20px 0;
-  position: relative;
-  z-index: 3;
+  cursor: pointer;
+  font-weight: 900;
 }
 
 .chestWrap {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0;
+  gap: 24px;
 }
 
-/* Orbit rings */
-.orbitRing1, .orbitRing2 {
-  position: absolute;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(255, 107, 203, 0.4);
-  pointer-events: none;
+.chestVisual {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mascotBounce 2.5s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
-.orbitRing1 {
-  width: 200px;
-  height: 200px;
-  animation: spin 20s linear infinite;
-}
-
-.orbitRing2 {
-  width: 240px;
-  height: 240px;
-  border-color: rgba(255, 217, 61, 0.3);
-  animation: spin 30s linear infinite reverse;
-}
-
-.chestGlow {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    rgba(255, 107, 203, 0.7) 0%,
-    rgba(255, 217, 61, 0.4) 40%,
-    transparent 70%);
-  filter: blur(45px);
-  animation: glowPulse 2.5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.chestInner {
+.chestEmoji {
+  font-size: 90px;
+  filter: drop-shadow(0 20px 40px rgba(255, 217, 61, 0.6));
   position: relative;
   z-index: 2;
-  cursor: pointer;
-  transition: transform 0.3s;
-  filter: drop-shadow(0 20px 50px rgba(255, 107, 203, 0.7));
 }
 
-.chestInner:hover {
-  transform: scale(1.08);
-}
-
-.chestInner.wiggle {
-  animation: mascotWiggle 0.5s ease-in-out 3;
-}
-
-/* ===== SPARKLES AROUND CHEST ===== */
-.sparkles {
+.chestRing1,
+.chestRing2 {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  pointer-events: none;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 217, 61, 0.5);
 }
 
-.sparkle {
-  position: absolute;
-  font-size: 1.4rem;
-  animation: sparkleSpin 2s ease-in-out infinite;
-  filter: drop-shadow(0 0 12px currentColor);
+.chestRing1 {
+  inset: -10px;
+  animation: spin 15s linear infinite;
 }
 
-/* ===== AMOUNT ===== */
-.rewardAmount {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
+.chestRing2 {
+  inset: -25px;
+  border-color: rgba(255, 107, 203, 0.4);
+  animation: spin 20s linear infinite reverse;
 }
 
-.num {
-  font-size: 3.4rem;
+.chestInfo { flex: 1; }
+
+.rewardLabel {
+  font-size: 0.7rem;
+  color: #ff6bcb;
+  letter-spacing: 2px;
   font-weight: 900;
-  background: linear-gradient(135deg, #fff, #ffd93d, #ff6bcb, #ffd93d);
-  background-size: 300% auto;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.rewardAmount {
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, #fff, #ffd93d, #ff6bcb);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: rainbow 3s linear infinite;
-  font-family: 'Fredoka', sans-serif;
-  letter-spacing: -2px;
   line-height: 1;
-  filter: drop-shadow(0 0 25px rgba(255, 217, 61, 0.7));
 }
 
-.unit {
-  font-size: 1.4rem;
-  font-weight: 900;
+.rewardUnit {
+  font-size: 1.2rem;
   color: #ffd93d;
   letter-spacing: 2px;
-  text-shadow: 0 0 20px rgba(255, 217, 61, 0.9);
+  margin-left: 6px;
 }
 
-/* ===== UNLOCK BADGE ===== */
-.unlockBadge {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.5px;
-  padding: 10px 22px;
-  background: linear-gradient(135deg, rgba(255, 107, 203, 0.25), rgba(255, 217, 61, 0.15));
-  border: 1.5px solid rgba(255, 107, 203, 0.5);
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
-  font-family: 'Fredoka', sans-serif;
-  box-shadow:
-    0 0 25px rgba(255, 107, 203, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  animation: speechBounce 3s ease-in-out infinite;
-  margin-top: 4px;
-}
-
-/* ===== PROGRESS SECTION ===== */
-.progressSection {
-  position: relative;
-  z-index: 3;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 107, 203, 0.25);
-}
-
-.progressHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.progressLabel {
-  font-size: 0.72rem;
-  color: #b8bcd0;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.progressPercent {
-  font-size: 1.1rem;
-  font-weight: 900;
-  font-family: 'Fredoka', sans-serif;
-  background: linear-gradient(135deg, #ffd93d, #ff6bcb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(255, 217, 61, 0.6));
-}
-
-.miniProgress {
-  height: 14px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  overflow: hidden;
+.unlockMsg {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 107, 203, 0.3);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-  position: relative;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #c4b8a8;
+  display: inline-block;
 }
 
-.miniFill {
-  height: 100%;
-  background: linear-gradient(90deg, #ff6bcb, #ffd93d, #ff6bcb);
-  background-size: 200% 100%;
-  border-radius: 8px;
-  box-shadow:
-    0 0 25px rgba(255, 107, 203, 0.9),
-    0 0 50px rgba(255, 217, 61, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  position: relative;
-  overflow: hidden;
-  animation: gradientSlide2 3s ease infinite;
-}
-
-.progressShine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  background-size: 200% 100%;
-  animation: shine 2s infinite;
-  border-radius: 8px;
-}
-
-.progressInfo {
-  margin-top: 8px;
-  font-size: 0.72rem;
-  color: #b8bcd0;
-  text-align: right;
-  font-weight: 600;
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
-  .card { padding: 22px; border-radius: 24px; }
-  .num { font-size: 2.6rem; }
-  .unit { font-size: 1.1rem; }
-  .chestInner > svg { width: 140px; height: 140px; }
-  .orbitRing1 { width: 170px; height: 170px; }
-  .orbitRing2 { width: 200px; height: 200px; }
-  .sparkles { width: 220px; height: 220px; }
+  .chestWrap { flex-direction: column; text-align: center; gap: 16px; }
 }

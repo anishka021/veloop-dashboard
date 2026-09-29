@@ -1,57 +1,44 @@
 import React from 'react';
 import styles from './Games.module.css';
-import ColorCard from '../../components/ColorCard/ColorCard';
-import { gameCards } from '../../data/appData';
+
+const gameCards = [
+  { icon: '🪙', title: 'VE Coin Catch', sub: 'Catch falling coins — 20 sec challenge', xp: '🔥 Most Popular', color: 'iconBlue' },
+  { icon: '🧩', title: 'Reward Memory', sub: 'Match cards, test memory', xp: '+20 XP', color: 'iconPurple' },
+  { icon: '⚡', title: 'Tap Challenge', sub: 'Complete timed taps', xp: '+15 XP', color: 'iconGreen' },
+  { icon: '🎁', title: 'Lucky Box', sub: 'Pick a reward box', xp: '+10 XP', color: 'iconOrange' },
+  { icon: '🏃', title: 'VE Sprint', sub: 'Skill-based challenge', xp: '+25 XP', color: 'iconRed' },
+  { icon: '🧠', title: 'Daily Puzzle', sub: 'Coming soon', xp: '🔜 Soon', color: 'iconCyan' },
+];
 
 const Games = () => {
-  const handleClick = (e) => {
-    const items = ['🎮', '🎉', '🎊', '✨', '⭐', '💫'];
-    for (let i = 0; i < 20; i++) {
-      const c = document.createElement('div');
-      c.textContent = items[Math.floor(Math.random() * items.length)];
-      c.style.position = 'fixed';
-      c.style.left = e.clientX + 'px';
-      c.style.top = e.clientY + 'px';
-      c.style.fontSize = '24px';
-      c.style.pointerEvents = 'none';
-      c.style.zIndex = '9999';
-      c.style.transition = 'all 1.2s ease-out';
-      document.body.appendChild(c);
-
-      const angle = (Math.PI * 2 * i) / 20;
-      const distance = 120 + Math.random() * 150;
-
-      setTimeout(() => {
-        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1.8)`;
-        c.style.opacity = '0';
-      }, 10);
-
-      setTimeout(() => c.remove(), 1300);
-    }
-  };
-
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <div className={styles.pageHero}>
-          <span className={styles.pageIcon}>🎮</span>
-          <h1 className={styles.gradientText}>Play & Earn Games</h1>
-          <p>Challenge yourself with our exciting mini-games and earn XP with every play. New games added weekly!</p>
+        <div className={styles.hero}>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>🎮 <span>PLAY & EARN</span> 🎮</div>
+            <h1 className={styles.heroTitle}>Games <span className={styles.gradientText}>Hub</span></h1>
+            <p className={styles.heroSubtitle}>Challenge yourself, play games, and earn XP with every win!</p>
+          </div>
         </div>
 
-        <div className={styles.colorGrid}>
-          {gameCards.map((card) => (
-            <ColorCard
-              key={card.id}
-              icon={card.icon}
-              title={card.title}
-              desc={card.desc}
-              badge={card.badge}
-              color={card.color}
-              disabled={!card.active}
-              onClick={handleClick}
-            />
-          ))}
+        <div className={styles.card}>
+          <div className={styles.cardGlow1}></div>
+          <div className={styles.cardContent}>
+            <div className={styles.earnGrid}>
+              {gameCards.map((card, idx) => (
+                <div key={idx} className={styles.earnCard}>
+                  <div className={`${styles.earnCardIcon} ${styles[card.color]}`}>{card.icon}</div>
+                  <div className={styles.earnCardTitle}>{card.title}</div>
+                  <div className={styles.earnCardSub}>{card.sub}</div>
+                  <div className={styles.earnCardReward}>
+                    <span className={styles.earnCardXP}>{card.xp}</span>
+                    <span className={styles.earnCardArrow}>→</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

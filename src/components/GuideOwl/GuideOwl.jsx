@@ -5,7 +5,7 @@ import styles from './GuideOwl.module.css';
 const GuideOwl = () => {
   const location = useLocation();
   const [bubbleOpen, setBubbleOpen] = useState(true);
-  const [guideText, setGuideText] = useState("Hi! I'm your guide owl. Click on any card to interact! 🚀");
+  const [guideText, setGuideText] = useState("Hi! I'm your guide owl. Click anywhere to explore! 🚀");
   const [tipIndex, setTipIndex] = useState(0);
 
   const pageTips = {
@@ -44,7 +44,7 @@ const GuideOwl = () => {
   }, [bubbleOpen, tipIndex]);
 
   const burstConfetti = (x, y) => {
-    const items = ['🎉','🎊','✨','⭐','💫','🏆','🎁','🪙','🌟','💎'];
+    const items = ['🎉', '🎊', '✨', '⭐', '💫', '🏆', '🎁', '🪙', '🌟', '💎'];
     for (let i = 0; i < 20; i++) {
       const c = document.createElement('div');
       c.textContent = items[Math.floor(Math.random() * items.length)];

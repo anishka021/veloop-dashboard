@@ -8,20 +8,22 @@ const GameContainer = () => {
   const [gameState, setGameState] = useState('start');
   const [score, setScore] = useState(0);
 
-  const handleStart = () => { setScore(0); setGameState('play'); };
-  const handleComplete = (finalScore) => { setScore(finalScore); setGameState('result'); };
-  const handleReset = () => { setGameState('start'); setScore(0); };
-
   return (
-    <div className={styles.card}>
-      <div className={styles.header}>
-        <div className={styles.title}>🎮 Play & Earn</div>
-        <div className={styles.tag}>🔥 Daily Challenge</div>
+    <div className={styles.gameCard}>
+      <div className={styles.gameHeader}>
+        <div className={styles.gameTitle}>🎮 Play & Earn</div>
+        <div className={styles.gameTag}>🔥 Daily Challenge</div>
       </div>
 
-      {gameState === 'start' && <GameStart onStart={handleStart} />}
-      {gameState === 'play' && <GamePlay onComplete={handleComplete} />}
-      {gameState === 'result' && <GameResult score={score} onReset={handleReset} />}
+      {gameState === 'start' && (
+        <GameStart onStart={() => { setScore(0); setGameState('play'); }} />
+      )}
+      {gameState === 'play' && (
+        <GamePlay onComplete={(finalScore) => { setScore(finalScore); setGameState('result'); }} />
+      )}
+      {gameState === 'result' && (
+        <GameResult score={score} onReset={() => { setGameState('start'); setScore(0); }} />
+      )}
     </div>
   );
 };

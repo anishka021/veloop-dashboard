@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './XPProgress.module.css';
-import { levelData } from '../../data/levelData';
+import { levelData } from '../../data/appData';
 
 const XPProgress = () => {
   const [progress, setProgress] = useState(0);
@@ -12,15 +12,15 @@ const XPProgress = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.bar}>
-        <div className={styles.fill} style={{ width: `${progress}%` }} />
+      <div className={styles.progressBar}>
+        <div className={styles.progressFill} style={{ width: `${progress}%` }} />
       </div>
-      <div className={styles.labels}>
-        <span className={styles.current}>
-          <strong>{levelData.currentXP.toLocaleString()}</strong> XP
+      <div className={styles.progressLabels}>
+        <span className={styles.progressCurrent}>
+          {levelData.currentXP.toLocaleString()}{' '}
+          <span className={styles.progressTotal}>/ {levelData.requiredXP.toLocaleString()} XP</span>
         </span>
-        <span className={styles.percent}>{progress}%</span>
-        <span className={styles.target}>{levelData.requiredXP.toLocaleString()} XP</span>
+        <span className={styles.progressPercent}>{progress}%</span>
       </div>
     </div>
   );

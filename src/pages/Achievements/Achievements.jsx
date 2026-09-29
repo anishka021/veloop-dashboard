@@ -1,59 +1,45 @@
 import React from 'react';
 import styles from './Achievements.module.css';
-import ColorCard from '../../components/ColorCard/ColorCard';
-import { achievementCards } from '../../data/appData';
 
-const Achievements = () => {
-  const handleClick = (e) => {
-    if (!e) return;
-    const items = ['🏆', '🏅', '👑', '✨', '⭐'];
-    for (let i = 0; i < 20; i++) {
-      const c = document.createElement('div');
-      c.textContent = items[Math.floor(Math.random() * items.length)];
-      c.style.position = 'fixed';
-      c.style.left = e.clientX + 'px';
-      c.style.top = e.clientY + 'px';
-      c.style.fontSize = '24px';
-      c.style.pointerEvents = 'none';
-      c.style.zIndex = '9999';
-      c.style.transition = 'all 1.2s ease-out';
-      document.body.appendChild(c);
-      const angle = (Math.PI * 2 * i) / 20;
-      const distance = 120 + Math.random() * 150;
-      setTimeout(() => {
-        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1.8)`;
-        c.style.opacity = '0';
-      }, 10);
-      setTimeout(() => c.remove(), 1300);
-    }
-  };
+const achievements = [
+  { icon: '⭐', title: 'First Step', sub: 'Complete first task', badge: '✓ Unlocked', color: 'iconOrange' },
+  { icon: '🎯', title: 'Focused', sub: '5 daily challenges in a row', badge: '✓ Unlocked', color: 'iconBlue' },
+  { icon: '🔥', title: 'On Fire', sub: '7-day streak', badge: '✓ Unlocked', color: 'iconRed' },
+  { icon: '🏅', title: 'Champion', sub: 'Reach Level 05', badge: '🔒 Locked', color: 'iconPurple' },
+  { icon: '👑', title: 'Legend', sub: 'Reach Level 10', badge: '🔒 Locked', color: 'iconGreen' },
+  { icon: '💎', title: 'Diamond', sub: 'All achievements', badge: '🔒 Locked', color: 'iconCyan' },
+];
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <div className={styles.pageHero}>
-          <span className={styles.pageIcon}>🏆</span>
-          <h1 className={styles.gradientText}>Your Achievements</h1>
-          <p>Unlock badges by completing challenges and reaching milestones. Show off your progress!</p>
+const Achievements = () => (
+  <div className={styles.page}>
+    <div className={styles.container}>
+      <div className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroBadge}>🏆 <span>ACHIEVEMENTS</span> 🏆</div>
+          <h1 className={styles.heroTitle}>Your <span className={styles.gradientText}>Badges</span></h1>
+          <p className={styles.heroSubtitle}>Collect badges and show off your progress!</p>
         </div>
-
-        <div className={styles.colorGrid}>
-          {achievementCards.map((card) => (
-            <ColorCard
-              key={card.id}
-              icon={card.icon}
-              title={card.title}
-              desc={card.desc}
-              badge={card.badge}
-              color={card.color}
-              disabled={!card.unlocked}
-              onClick={handleClick}
-            />
-          ))}
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardGlow1}></div>
+        <div className={styles.cardContent}>
+          <div className={styles.earnGrid}>
+            {achievements.map((card, idx) => (
+              <div key={idx} className={styles.earnCard}>
+                <div className={`${styles.earnCardIcon} ${styles[card.color]}`}>{card.icon}</div>
+                <div className={styles.earnCardTitle}>{card.title}</div>
+                <div className={styles.earnCardSub}>{card.sub}</div>
+                <div className={styles.earnCardReward}>
+                  <span className={styles.earnCardXP}>{card.badge}</span>
+                  <span className={styles.earnCardArrow}>→</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Achievements;

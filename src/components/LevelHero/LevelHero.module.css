@@ -1,9 +1,12 @@
 .hero {
   text-align: center;
-  padding: 50px 20px 40px;
+  padding: 60px 20px 50px;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.9s ease-out;
+  border-radius: 40px;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.05), rgba(255, 107, 203, 0.03), rgba(179, 136, 255, 0.05));
+  border: 1px solid rgba(255, 217, 61, 0.15);
 }
 
 .particles {
@@ -17,40 +20,46 @@
 .particle {
   position: absolute;
   bottom: -10px;
-  background: #f4d03f;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(244, 208, 63, 0.9);
   animation: particleRise linear infinite;
 }
 
-.glowOrb1, .glowOrb2, .glowOrb3 {
+.glowOrb1, .glowOrb2, .glowOrb3, .glowOrb4 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .glowOrb1 {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent 70%);
-  top: -100px; left: 10%;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(255, 107, 203, 0.5), transparent 70%);
+  top: -120px; left: 8%;
   animation: float 8s ease-in-out infinite;
 }
 
 .glowOrb2 {
-  width: 250px; height: 250px;
-  background: radial-gradient(circle, rgba(74, 144, 226, 0.3), transparent 70%);
-  top: 20px; right: 10%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.4), transparent 70%);
+  top: 20px; right: 8%;
   animation: float 10s ease-in-out infinite reverse;
 }
 
 .glowOrb3 {
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(142, 108, 201, 0.3), transparent 70%);
-  bottom: -50px; left: 50%;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(179, 136, 255, 0.4), transparent 70%);
+  bottom: -80px; left: 50%;
   transform: translateX(-50%);
   animation: float 12s ease-in-out infinite;
+}
+
+.glowOrb4 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.3), transparent 70%);
+  top: 40%; left: 50%;
+  transform: translateX(-50%);
+  animation: float 15s ease-in-out infinite reverse;
 }
 
 .content {
@@ -61,41 +70,42 @@
 .mascot {
   position: relative;
   display: inline-block;
-  margin-bottom: 16px;
-  animation: jump 2.5s ease-in-out infinite;
-  filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.5));
+  margin-bottom: 20px;
+  animation: mascotBounce 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 50px rgba(255, 217, 61, 0.6));
   cursor: pointer;
 }
 
 .mascot:hover {
-  animation: wiggle 0.5s ease-in-out infinite;
+  animation: mascotWiggle 0.5s ease-in-out infinite;
+  filter: drop-shadow(0 25px 60px rgba(255, 217, 61, 0.8));
 }
 
 .mascotSparkle {
   position: absolute;
-  font-size: 22px;
-  animation: sparklePop 1.5s ease-in-out infinite;
+  font-size: 24px;
+  animation: sparkleSpin 1.5s ease-in-out infinite;
   pointer-events: none;
 }
 
 .s1 { top: 0; right: -15px; animation-delay: 0s; }
-.s2 { top: 30%; left: -20px; animation-delay: 0.5s; }
+.s2 { top: 30%; left: -25px; animation-delay: 0.5s; }
 .s3 { bottom: 0; right: -10px; animation-delay: 1s; }
-.s4 { top: -10px; left: 0; animation-delay: 0.3s; font-size: 16px; }
+.s4 { top: -10px; left: 0; animation-delay: 0.3s; font-size: 18px; }
 
 .speechBubble {
   position: absolute;
   top: -20px;
-  right: -220px;
-  background: linear-gradient(135deg, #fff, #f0f0f0);
-  color: #0a0d1a;
-  padding: 12px 20px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  right: -240px;
+  background: linear-gradient(135deg, #ffd93d, #f4a62a);
+  color: #1a1f38;
+  padding: 14px 24px;
+  border-radius: 22px;
+  font-size: 0.9rem;
+  font-weight: 800;
   white-space: nowrap;
-  animation: bounce 2s ease-in-out infinite;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: speechBounce 2s ease-in-out infinite;
+  box-shadow: 0 12px 30px rgba(255, 217, 61, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.15);
   font-family: 'Fredoka', sans-serif;
   z-index: 10;
 }
@@ -103,96 +113,102 @@
 .speechBubble::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 20px;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top-color: #fff;
-  border-bottom: 0;
-  border-left: 0;
+  bottom: 0; left: 20px;
+  width: 0; height: 0;
+  border: 12px solid transparent;
+  border-top-color: #ffd93d;
+  border-bottom: 0; border-left: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .speechBubble {
-    right: auto;
-    left: 50%;
+    right: auto; left: 50%;
     transform: translateX(-50%);
-    top: -60px;
-    font-size: 0.72rem;
-    padding: 8px 14px;
+    top: -70px;
+    font-size: 0.78rem;
+    padding: 10px 16px;
   }
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: var(--gold);
-  padding: 8px 20px;
-  border-radius: 24px;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.2) 0%, rgba(255, 217, 61, 0.08) 50%, rgba(255, 217, 61, 0.2) 100%);
+  border: 1.5px solid rgba(255, 217, 61, 0.5);
+  color: #ffd93d;
+  padding: 10px 24px;
+  border-radius: 30px;
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  margin-bottom: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
   position: relative;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 6px 30px rgba(255, 217, 61, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   overflow: hidden;
   animation: bounceIn 0.8s ease-out 0.3s both;
 }
 
-.badge::after {
+.badge::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
+  border-radius: inherit;
 }
 
+.badgeIcon {
+  font-size: 14px;
+  animation: sparkleSpin 2s ease-in-out infinite;
+}
+
+.badgeText { position: relative; z-index: 1; }
+
 .title {
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 18px;
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
   color: #fff;
   animation: bounceIn 0.8s ease-out 0.4s both;
   font-family: 'Fredoka', sans-serif;
+  letter-spacing: -1px;
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 30%, #ff9f43 60%, #f4d03f 100%);
+  background: linear-gradient(135deg, #ffd93d 0%, #ff6bcb 30%, #b388ff 60%, #64b5f6 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: rainbowText 3s linear infinite;
+  animation: rainbow 3s linear infinite;
   display: inline-block;
+  filter: drop-shadow(0 0 40px rgba(255, 217, 61, 0.5));
 }
 
 .titleSparkle {
   display: inline-block;
-  margin-left: 8px;
+  margin-left: 10px;
   animation: wiggle 1s ease-in-out infinite;
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .subtitle {
-  color: var(--text-2);
+  color: #b8bcd0;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  max-width: 620px;
-  margin: 0 auto 28px;
-  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
   animation: fadeInUp 0.8s ease-out 0.5s both;
 }
 
 .statsStrip {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   animation: fadeInUp 0.8s ease-out 0.6s both;
 }
@@ -200,47 +216,75 @@
 .statPill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
+  gap: 10px;
+  padding: 12px 20px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s;
+  border: 1.5px solid;
+  backdrop-filter: blur(15px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
-.statPill:hover { transform: translateY(-4px) scale(1.05); }
+.statPill:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
 
-.green { background: rgba(82, 196, 26, 0.1); border-color: rgba(82, 196, 26, 0.3); color: var(--green); }
-.gold { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.3); color: var(--gold); }
-.purple { background: rgba(142, 108, 201, 0.1); border-color: rgba(142, 108, 201, 0.3); color: var(--purple); }
+.statIcon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.statText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.statValue {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.statLabel {
+  font-size: 0.68rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.green { background: linear-gradient(135deg, rgba(110, 231, 183, 0.2), rgba(110, 231, 183, 0.05)); border-color: rgba(110, 231, 183, 0.5); color: #6ee7b7; }
+.gold { background: linear-gradient(135deg, rgba(255, 217, 61, 0.2), rgba(255, 217, 61, 0.05)); border-color: rgba(255, 217, 61, 0.5); color: #ffd93d; }
+.purple { background: linear-gradient(135deg, rgba(179, 136, 255, 0.2), rgba(179, 136, 255, 0.05)); border-color: rgba(179, 136, 255, 0.5); color: #b388ff; }
 
 .quoteBox {
-  margin-top: 24px;
-  padding: 16px 24px;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 16px;
+  margin-top: 28px;
+  padding: 18px 30px;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.12), rgba(255, 107, 203, 0.08));
+  border: 1px solid rgba(255, 217, 61, 0.35);
+  border-radius: 18px;
   display: inline-block;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 217, 61, 0.2);
   animation: fadeInUp 0.8s ease-out 0.7s both;
 }
 
 .quoteText {
-  font-size: 0.9rem;
-  color: var(--text-2);
+  font-size: 0.95rem;
+  color: #b8bcd0;
   font-style: italic;
   transition: opacity 0.3s;
 }
 
 .quoteText.fading { opacity: 0; }
-.quoteText :global(strong) {
-  color: var(--gold);
-  font-style: normal;
-  font-weight: 700;
-}
+.quoteText :global(strong) { color: #ffd93d; font-style: normal; font-weight: 800; }
 
 @media (max-width: 640px) {
-  .hero { padding: 30px 16px 20px; }
+  .hero { padding: 40px 16px 30px; border-radius: 28px; }
+  .statPill { padding: 10px 16px; }
+  .statValue { font-size: 0.95rem; }
 }

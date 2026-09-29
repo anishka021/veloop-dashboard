@@ -1,8 +1,8 @@
 .footer {
-  margin-top: 40px;
-  padding: 40px 32px 24px;
-  background: linear-gradient(135deg, rgba(20, 25, 45, 0.95), rgba(25, 30, 55, 0.9));
-  border-top: 1px solid rgba(255, 217, 61, 0.2);
+  margin: 40px -16px 0;
+  padding: 50px 32px 24px;
+  background: linear-gradient(135deg, rgba(20, 12, 30, 0.98), rgba(30, 18, 42, 0.95));
+  border-top: 1.5px solid rgba(255, 217, 61, 0.25);
   position: relative;
   z-index: 10;
 }
@@ -16,59 +16,34 @@
   margin-bottom: 32px;
 }
 
-.footerCol h4 {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 16px;
-  font-family: 'Fredoka', sans-serif;
-}
-
-.footerCol p,
-.footerDesc {
-  color: #b8bcd0;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-
-.footerCol a {
-  display: block;
-  color: #b8bcd0;
-  font-size: 0.85rem;
-  padding: 6px 0;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.footerCol a:hover {
-  color: #ffd93d;
-  transform: translateX(4px);
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .navLogo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.4rem;
-  font-weight: 900;
-  font-family: 'Fredoka', sans-serif;
-  cursor: pointer;
-  margin-bottom: 16px;
+  gap: 10px;
 }
 
 .logoIcon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   background: linear-gradient(135deg, #ffd93d, #ff6bcb);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  box-shadow: 0 8px 25px rgba(255, 217, 61, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 217, 61, 0.5);
 }
 
 .logoText {
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-family: 'Fredoka', sans-serif;
   background: linear-gradient(135deg, #ffd93d, #ff6bcb, #b388ff);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -76,15 +51,21 @@
   background-clip: text;
 }
 
+.footerBrand p {
+  color: #c4b8a8;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
 .footerSocials {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .socialBtn {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -94,12 +75,36 @@
   cursor: pointer;
   transition: all 0.3s;
   font-size: 1.1rem;
+  color: #fff;
 }
 
 .socialBtn:hover {
   background: linear-gradient(135deg, rgba(255, 217, 61, 0.2), rgba(255, 107, 203, 0.15));
   border-color: rgba(255, 217, 61, 0.5);
   transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 217, 61, 0.3);
+}
+
+.footerCol h4 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  font-family: 'Fredoka', sans-serif;
+  color: #ffd93d;
+  text-shadow: 0 0 15px rgba(255, 217, 61, 0.4);
+}
+
+.footerCol a {
+  display: block;
+  color: #c4b8a8;
+  font-size: 0.88rem;
+  padding: 6px 0;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.footerCol a:hover {
+  color: #ffd93d;
+  transform: translateX(4px);
 }
 
 .footerBottom {
@@ -112,9 +117,11 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  color: #6b7080;
-  font-size: 0.8rem;
+  color: #8b7d6a;
+  font-size: 0.82rem;
 }
+
+.footerBottom strong { color: #ffd93d; }
 
 @media (max-width: 900px) {
   .footerContent { grid-template-columns: 1fr 1fr; gap: 24px; }

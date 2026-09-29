@@ -1,233 +1,151 @@
 .card {
-  background: linear-gradient(135deg, #16192b 0%, #1c2038 100%);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 28px;
-  animation: bounceIn 0.8s ease-out 0.4s both;
+  background: linear-gradient(135deg, rgba(35, 25, 15, 0.95) 0%, rgba(50, 38, 22, 0.92) 50%, rgba(35, 25, 15, 0.95) 100%);
+  backdrop-filter: blur(25px);
+  border: 1.5px solid rgba(255, 217, 61, 0.4);
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 217, 61, 0.15);
+  margin-bottom: 20px;
 }
 
-.header {
+.cardGlow1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.5), transparent 70%);
+  filter: blur(70px);
+  opacity: 0.6;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.cardContent { position: relative; z-index: 3; }
+
+.sectionHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
+  margin-bottom: 18px;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-.title {
-  font-size: 1.25rem;
-  color: #fff;
+.sectionTitle {
+  font-size: 1.15rem;
   font-family: 'Fredoka', sans-serif;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.legend {
-  display: flex;
-  gap: 16px;
-  font-size: 0.72rem;
-  color: var(--text-3);
+.sectionSub {
+  font-size: 0.8rem;
+  color: #c4b8a8;
+  margin-top: 4px;
 }
 
-.legend span { display: flex; align-items: center; gap: 6px; }
-.legend i {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.legend .completed { background: var(--green); box-shadow: 0 0 8px rgba(82, 196, 26, 0.6); }
-.legend .current { background: var(--gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
-.legend .locked { background: var(--text-3); }
-
-.roadmapWrap {
-  overflow-x: auto;
-  padding: 20px 0 10px;
-  margin: 0 -8px;
-}
+.roadmapWrap { overflow-x: auto; padding: 20px 0; }
 
 .roadmap {
   display: flex;
-  align-items: flex-start;
-  padding: 0 8px;
+  gap: 0;
+  align-items: center;
   min-width: min-content;
 }
 
-.item {
+.levelNode {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  position: relative;
-  min-width: 130px;
+  min-width: 110px;
   padding: 12px 8px;
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  position: relative;
   cursor: pointer;
-  flex-shrink: 0;
+  transition: all 0.3s;
+  border-radius: 16px;
 }
 
-.item:hover {
-  background: rgba(255, 255, 255, 0.03);
+.levelNode:hover {
+  background: rgba(255, 217, 61, 0.05);
   transform: translateY(-4px);
 }
 
-.youAreHereBadge {
-  position: absolute;
-  top: -6px;
-  background: linear-gradient(135deg, #d4af37, #f4d03f);
-  color: #0a0d1a;
-  font-size: 0.62rem;
+.levelNodeCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 3px solid;
+  background: radial-gradient(circle at 30% 30%, #2a1f10, #0a0608);
+}
+
+.nodeCompleted .levelNodeCircle {
+  border-color: #6ee7b7;
+  box-shadow: 0 0 30px rgba(110, 231, 183, 0.6);
+}
+
+.nodeCurrent .levelNodeCircle {
+  border-color: #ffd93d;
+  transform: scale(1.15);
+  box-shadow: 0 0 40px rgba(255, 217, 61, 0.9), 0 0 80px rgba(255, 217, 61, 0.4);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.nodeNext .levelNodeCircle {
+  border-color: #64b5f6;
+  box-shadow: 0 0 30px rgba(100, 181, 246, 0.5);
+}
+
+.nodeLocked .levelNodeCircle {
+  border-color: rgba(139, 125, 106, 0.4);
+  filter: grayscale(0.7);
+  opacity: 0.5;
+}
+
+.levelNodeLevel {
+  font-size: 0.68rem;
+  color: #8b7d6a;
   font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.levelNodeName {
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.levelNodeReward {
+  font-size: 0.72rem;
   padding: 4px 10px;
   border-radius: 10px;
-  white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.5);
-  animation: bounce 1.5s ease-in-out infinite;
-  z-index: 10;
-  font-family: 'Fredoka', sans-serif;
-}
-
-.nodeOuter {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nodeRing {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  pointer-events: none;
-}
-
-.node {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid;
-  background: #0a0d1a;
-  overflow: hidden;
-  position: relative;
-}
-
-.completed .node {
-  background: linear-gradient(135deg, rgba(82, 196, 26, 0.25), rgba(82, 196, 26, 0.08));
-  border-color: var(--green);
-  box-shadow: 0 0 20px rgba(82, 196, 26, 0.4);
-}
-
-.current .node {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.35), rgba(212, 175, 55, 0.1));
-  border-color: var(--gold);
-  transform: scale(1.15);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.current .nodeRing {
-  border-color: rgba(212, 175, 55, 0.5);
-  animation: spinSlow 8s linear infinite;
-  border-top-color: transparent;
-  border-right-color: transparent;
-}
-
-.next .node {
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.25), rgba(74, 144, 226, 0.08));
-  border-color: var(--blue);
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.4);
-  animation: bounce 2.5s ease-in-out infinite;
-}
-
-.locked .node {
-  background: rgba(107, 112, 128, 0.1);
-  border-color: rgba(107, 112, 128, 0.4);
-}
-
-.locked .node :global(svg) {
-  opacity: 0.4;
-  filter: grayscale(1);
-}
-
-.info { text-align: center; }
-
-.levelLabel {
-  font-size: 0.68rem;
-  color: var(--text-3);
+  background: rgba(255, 217, 61, 0.15);
+  color: #ffd93d;
   font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 2px;
-}
-
-.completed .levelLabel { color: var(--green); }
-.current .levelLabel { color: var(--gold); }
-.next .levelLabel { color: var(--blue); }
-
-.levelName {
-  font-size: 0.8rem;
-  color: var(--text-2);
-  font-weight: 600;
-  margin-bottom: 4px;
-  white-space: nowrap;
   font-family: 'Fredoka', sans-serif;
-}
-
-.reward {
-  font-size: 0.7rem;
-  color: var(--gold);
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 3px 8px;
-  background: rgba(212, 175, 55, 0.1);
-  border-radius: 8px;
-  white-space: nowrap;
-}
-
-.locked .reward {
-  color: var(--text-3);
-  background: rgba(107, 112, 128, 0.1);
-}
-
-.connector {
-  width: 44px;
-  height: 2px;
-  margin-bottom: 88px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
 }
 
 .connectorLine {
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd93d, #ff6bcb);
+  border-radius: 3px;
+  margin: 0 -4px 60px;
+  box-shadow: 0 0 15px rgba(255, 217, 61, 0.6);
 }
 
-.completed + .connector .connectorLine {
-  background: linear-gradient(90deg, var(--green), rgba(82, 196, 26, 0.3));
-  box-shadow: 0 0 8px rgba(82, 196, 26, 0.4);
-}
-
-.current + .connector .connectorLine {
-  background: linear-gradient(90deg, var(--gold), var(--blue));
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-}
-
-@media (max-width: 640px) {
-  .card { padding: 20px; }
-  .legend { display: none; }
-  .item { min-width: 108px; }
-  .connector { width: 30px; }
+.connectorLine.green { background: linear-gradient(90deg, #6ee7b7, #10b981); }
+.connectorLine.gray {
+  background: rgba(139, 125, 106, 0.3);
+  box-shadow: none;
 }

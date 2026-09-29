@@ -1,67 +1,183 @@
-/* Same as Games.module.css */
 .page {
   position: relative;
   z-index: 10;
-  animation: pageFade 0.5s ease-out;
+  animation: fadeInUp 0.5s ease-out;
 }
 
-@keyframes pageFade {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.container { max-width: 1280px; margin: 0 auto; }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 24px 20px 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.pageHero {
+.hero {
   text-align: center;
-  padding: 60px 20px 40px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, rgba(255, 217, 61, 0.05), rgba(255, 107, 203, 0.03), rgba(179, 136, 255, 0.05));
-  border: 1px solid rgba(255, 217, 61, 0.15);
+  padding: 50px 20px 30px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.06), rgba(255, 107, 203, 0.04), rgba(179, 136, 255, 0.06));
+  border: 1px solid rgba(255, 217, 61, 0.18);
   margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  animation: bounceIn 0.8s ease-out;
 }
 
-.pageIcon {
-  font-size: 80px;
-  margin-bottom: 16px;
-  display: block;
-  animation: mascotBounce 2.5s ease-in-out infinite;
-  filter: drop-shadow(0 15px 40px rgba(255, 217, 61, 0.5));
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.15), transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
 }
 
-.pageHero h1 {
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 900;
+.heroContent { position: relative; z-index: 2; }
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.2), rgba(255, 107, 203, 0.1));
+  border: 1px solid rgba(255, 217, 61, 0.5);
+  color: #ffd93d;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(255, 217, 61, 0.25);
+}
+
+.heroTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   margin-bottom: 12px;
+  letter-spacing: -1px;
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #ffd93d 0%, #ff6bcb 30%, #b388ff 60%, #64b5f6 100%);
+  background: linear-gradient(135deg, #ffd93d, #ff6bcb, #b388ff);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: rainbow 4s linear infinite;
-  display: inline-block;
+  animation: rainbow 3s linear infinite;
 }
 
-.pageHero p {
-  color: #b8bcd0;
-  font-size: 1rem;
-  max-width: 600px;
+.heroSubtitle {
+  color: #c4b8a8;
+  font-size: 0.95rem;
+  max-width: 520px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-.colorGrid {
+.card {
+  background: linear-gradient(135deg, rgba(35, 25, 15, 0.95) 0%, rgba(50, 38, 22, 0.92) 50%, rgba(35, 25, 15, 0.95) 100%);
+  backdrop-filter: blur(25px);
+  border: 1.5px solid rgba(255, 217, 61, 0.4);
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 217, 61, 0.15);
+  margin-bottom: 20px;
+}
+
+.cardGlow1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.5), transparent 70%);
+  filter: blur(70px);
+  opacity: 0.6;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.cardContent { position: relative; z-index: 3; }
+
+.earnGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.earnCard {
+  background: linear-gradient(135deg, rgba(40, 28, 18, 0.95), rgba(55, 40, 22, 0.92));
+  border: 1.5px solid rgba(255, 217, 61, 0.25);
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: bounceIn 0.6s ease-out both;
+}
+
+.earnCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 217, 61, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 217, 61, 0.25);
+}
+
+.earnCardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: mascotBounce 2.5s ease-in-out infinite;
+}
+
+.iconPurple { background: linear-gradient(135deg, #a855f7, #6366f1); }
+.iconGreen { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.iconOrange { background: linear-gradient(135deg, #f97316, #ea580c); }
+.iconBlue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.iconRed { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.iconCyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+
+.earnCardTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+}
+
+.earnCardSub {
+  font-size: 0.78rem;
+  color: #c4b8a8;
+  line-height: 1.4;
+}
+
+.earnCardReward {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 217, 61, 0.15);
+}
+
+.earnCardXP {
+  color: #ffd93d;
+  font-weight: 900;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+}
+
+.earnCardArrow {
+  color: #c4b8a8;
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.earnCard:hover .earnCardArrow {
+  transform: translateX(4px);
+  color: #ffd93d;
 }

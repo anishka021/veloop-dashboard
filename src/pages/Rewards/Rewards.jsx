@@ -1,59 +1,43 @@
 import React from 'react';
 import styles from './Rewards.module.css';
-import ColorCard from '../../components/ColorCard/ColorCard';
-import { rewardCards } from '../../data/appData';
 
-const Rewards = () => {
-  const handleClick = (e) => {
-    if (!e) return;
-    const items = ['💎', '🎁', '✨', '⭐'];
-    for (let i = 0; i < 20; i++) {
-      const c = document.createElement('div');
-      c.textContent = items[Math.floor(Math.random() * items.length)];
-      c.style.position = 'fixed';
-      c.style.left = e.clientX + 'px';
-      c.style.top = e.clientY + 'px';
-      c.style.fontSize = '24px';
-      c.style.pointerEvents = 'none';
-      c.style.zIndex = '9999';
-      c.style.transition = 'all 1.2s ease-out';
-      document.body.appendChild(c);
-      const angle = (Math.PI * 2 * i) / 20;
-      const distance = 120 + Math.random() * 150;
-      setTimeout(() => {
-        c.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1.8)`;
-        c.style.opacity = '0';
-      }, 10);
-      setTimeout(() => c.remove(), 1300);
-    }
-  };
+const rewards = [
+  { icon: '💎', title: '500 VEs', sub: 'Next level reward', badge: '🔒 Level 05', color: 'iconBlue' },
+  { icon: '✅', title: '100 VEs', sub: 'Level 02 reward', badge: '✓ Claimed', color: 'iconGreen' },
+  { icon: '💠', title: '10 Gems', sub: 'Level 03 reward', badge: '✓ Claimed', color: 'iconPurple' },
+  { icon: '🎰', title: '2 Spins', sub: 'Level 06 reward', badge: '🔒 Level 06', color: 'iconRed' },
+];
 
-  return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <div className={styles.pageHero}>
-          <span className={styles.pageIcon}>🎁</span>
-          <h1 className={styles.gradientText}>Your Rewards</h1>
-          <p>Unlock premium rewards as you level up. Each level brings new and better rewards!</p>
+const Rewards = () => (
+  <div className={styles.page}>
+    <div className={styles.container}>
+      <div className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroBadge}>🎁 <span>YOUR REWARDS</span> 🎁</div>
+          <h1 className={styles.heroTitle}>Unlock <span className={styles.gradientText}>Rewards</span></h1>
+          <p className={styles.heroSubtitle}>Level up and unlock amazing rewards!</p>
         </div>
-
-        <div className={styles.colorGrid}>
-          {rewardCards.map((card) => (
-            <ColorCard
-              key={card.id}
-              icon={card.icon}
-              title={card.title}
-              desc={card.desc}
-              badge={card.badge}
-              color={card.color}
-              disabled={card.locked}
-              onClick={handleClick}
-            />
-          ))}
+      </div>
+      <div className={styles.card}>
+        <div className={styles.cardGlow1}></div>
+        <div className={styles.cardContent}>
+          <div className={styles.earnGrid}>
+            {rewards.map((card, idx) => (
+              <div key={idx} className={styles.earnCard}>
+                <div className={`${styles.earnCardIcon} ${styles[card.color]}`}>{card.icon}</div>
+                <div className={styles.earnCardTitle}>{card.title}</div>
+                <div className={styles.earnCardSub}>{card.sub}</div>
+                <div className={styles.earnCardReward}>
+                  <span className={styles.earnCardXP}>{card.badge}</span>
+                  <span className={styles.earnCardArrow}>→</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Rewards;

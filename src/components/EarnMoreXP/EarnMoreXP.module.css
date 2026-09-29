@@ -1,140 +1,145 @@
-.section {
-  background: linear-gradient(135deg, #16192b 0%, #1c2038 100%);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 28px;
-  animation: bounceIn 0.8s ease-out 0.7s both;
-}
-
-.header { margin-bottom: 24px; }
-
-.title {
-  font-size: 1.25rem;
-  color: #fff;
-  margin-bottom: 4px;
-  font-family: 'Fredoka', sans-serif;
-}
-
-.subtitle {
-  color: var(--text-2);
-  font-size: 0.85rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-}
-
 .card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 20px;
+  background: linear-gradient(135deg, rgba(35, 25, 15, 0.95) 0%, rgba(50, 38, 22, 0.92) 50%, rgba(35, 25, 15, 0.95) 100%);
+  backdrop-filter: blur(25px);
+  border: 1.5px solid rgba(255, 217, 61, 0.4);
+  border-radius: 24px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 217, 61, 0.15);
+  margin-bottom: 20px;
+}
+
+.cardGlow1 {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.5), transparent 70%);
+  filter: blur(70px);
+  opacity: 0.6;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.cardContent { position: relative; z-index: 3; }
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: 1.15rem;
+  font-family: 'Fredoka', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionSub {
+  font-size: 0.8rem;
+  color: #c4b8a8;
+  margin-top: 4px;
+}
+
+.sectionLink {
+  font-size: 0.82rem;
+  color: #ffd93d;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.sectionLink:hover { background: rgba(255, 217, 61, 0.1); }
+
+.earnGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.earnCard {
+  background: linear-gradient(135deg, rgba(40, 28, 18, 0.95), rgba(55, 40, 22, 0.92));
+  border: 1.5px solid rgba(255, 217, 61, 0.25);
+  border-radius: 20px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  animation: bounceIn 0.6s ease-out both;
+  gap: 10px;
   cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-10px) rotate(2deg) scale(1.03);
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.25);
+.earnCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 217, 61, 0.7);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 217, 61, 0.25);
 }
 
-.iconWrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
+.earnCardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
-  transition: transform 0.3s;
-  animation: bounce 2.5s ease-in-out infinite;
-  position: relative;
+  font-size: 28px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: mascotBounce 2.5s ease-in-out infinite;
 }
 
-.card:hover .iconWrap {
-  transform: scale(1.15) rotate(10deg);
-  animation: wiggle 0.5s ease-in-out infinite;
-}
+.iconPurple { background: linear-gradient(135deg, #a855f7, #6366f1); }
+.iconGreen { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.iconOrange { background: linear-gradient(135deg, #f97316, #ea580c); }
+.iconBlue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.iconRed { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.iconCyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
 
-.gold .iconWrap { background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); }
-.blue .iconWrap { background: rgba(74, 144, 226, 0.15); border: 1px solid rgba(74, 144, 226, 0.3); }
-.green .iconWrap { background: rgba(82, 196, 26, 0.15); border: 1px solid rgba(82, 196, 26, 0.3); }
-.purple .iconWrap { background: rgba(142, 108, 201, 0.15); border: 1px solid rgba(142, 108, 201, 0.3); }
-
-.cardTitle {
+.earnCardTitle {
   font-size: 1rem;
-  color: #fff;
-  margin: 0 0 6px 0;
+  font-weight: 800;
   font-family: 'Fredoka', sans-serif;
 }
 
-.reward {
-  color: var(--gold);
-  font-weight: 800;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+.earnCardSub {
+  font-size: 0.78rem;
+  color: #c4b8a8;
+  line-height: 1.4;
+}
+
+.earnCardReward {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 217, 61, 0.15);
+}
+
+.earnCardXP {
+  color: #ffd93d;
+  font-weight: 900;
   font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
 }
 
-.desc {
-  color: var(--text-3);
-  font-size: 0.76rem;
-  flex: 1;
-  margin: 0 0 14px 0;
-  line-height: 1.5;
+.earnCardArrow {
+  color: #c4b8a8;
+  font-size: 1.2rem;
+  transition: transform 0.3s;
 }
 
-.cta {
-  background: transparent;
-  border: 1.5px solid rgba(212, 175, 55, 0.4);
-  color: var(--gold);
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s;
-  align-self: flex-start;
-  font-family: inherit;
-}
-
-.cta:hover {
-  background: var(--gold);
-  color: #0a0d1a;
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
-
-.badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, rgba(142, 108, 201, 0.3), rgba(142, 108, 201, 0.1));
-  color: #b39ddb;
-  font-size: 0.62rem;
-  padding: 3px 9px;
-  border-radius: 8px;
-  font-weight: 800;
-  border: 1px solid rgba(142, 108, 201, 0.3);
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.disabled:hover {
-  transform: none;
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: none;
+.earnCard:hover .earnCardArrow {
+  transform: translateX(4px);
+  color: #ffd93d;
 }

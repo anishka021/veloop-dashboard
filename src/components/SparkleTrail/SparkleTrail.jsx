@@ -2,31 +2,31 @@ import React, { useEffect } from 'react';
 
 const SparkleTrail = () => {
   useEffect(() => {
-    let lastTime = 0;
+    let lastSparkle = 0;
 
-    const handleMouseMove = (e) => {
+    const handleMove = (e) => {
       const now = Date.now();
-      if (now - lastTime < 100) return;
-      lastTime = now;
-
-      const sparkle = document.createElement('div');
-      const emojis = ['✨', '⭐', '💫', '🌟'];
-      sparkle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      sparkle.style.position = 'fixed';
-      sparkle.style.left = e.clientX + 'px';
-      sparkle.style.top = e.clientY + 'px';
-      sparkle.style.pointerEvents = 'none';
-      sparkle.style.zIndex = '9999';
-      sparkle.style.fontSize = '16px';
-      sparkle.style.animation = 'sparklePop 0.8s ease-out forwards';
-      sparkle.style.userSelect = 'none';
-      document.body.appendChild(sparkle);
-
-      setTimeout(() => sparkle.remove(), 800);
+      if (now - lastSparkle > 100) {
+        const s = document.createElement('div');
+        const colors = ['#ffd93d', '#ff6bcb', '#b388ff', '#64b5f6', '#6ee7b7'];
+        s.textContent = ['✨', '⭐', '💫', '🌟', '💎'][Math.floor(Math.random() * 5)];
+        s.style.position = 'fixed';
+        s.style.color = colors[Math.floor(Math.random() * colors.length)];
+        s.style.left = e.clientX + 'px';
+        s.style.top = e.clientY + 'px';
+        s.style.fontSize = '18px';
+        s.style.pointerEvents = 'none';
+        s.style.zIndex = '9999';
+        s.style.animation = 'sparkPop 0.9s ease-out forwards';
+        s.style.filter = 'drop-shadow(0 0 8px currentColor)';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 900);
+        lastSparkle = now;
+      }
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousemove', handleMove);
+    return () => document.removeEventListener('mousemove', handleMove);
   }, []);
 
   return null;

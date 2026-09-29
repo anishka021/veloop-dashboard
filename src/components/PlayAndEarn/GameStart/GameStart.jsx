@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './GameStart.module.css';
-import { BasketCharacter } from '../../Icons/SvgIcons';
 
 const GameStart = ({ onStart }) => {
   const handleStart = (e) => {
-    // Confetti
-    const emojis = ['🎉','🎊','🪙','💎','⭐','🏆','🎁'];
+    const emojis = ['🎉', '🎊', '🪙', '💎', '⭐', '🏆', '🎁'];
     for (let i = 0; i < 30; i++) {
       setTimeout(() => {
         const c = document.createElement('div');
@@ -30,28 +28,29 @@ const GameStart = ({ onStart }) => {
   };
 
   return (
-    <div className={styles.start}>
-      <div className={styles.illustration}>
-        <BasketCharacter size={160} />
+    <div className={styles.gameBody}>
+      <div className={styles.gameIllustration}>
+        <span className={styles.gameCoin} style={{ top: '10px', left: '20px' }}>🪙</span>
+        <span className={styles.gameCoin} style={{ top: '30px', right: '20px', animationDelay: '0.5s' }}>⭐</span>
+        <span className={styles.gameCoin} style={{ top: '60px', left: '60px', animationDelay: '1s' }}>💎</span>
+        <div className={styles.gameBasket}>🧺</div>
       </div>
-      <h2 className={styles.gameTitle}>VE Coin Catch</h2>
-      <p className={styles.desc}>
-        Catch as many falling VE coins as you can in 20 seconds and win XP!
-      </p>
-
-      <div className={styles.rules}>
-        <div className={styles.rule}>⏱ <span>20 sec</span></div>
-        <div className={styles.ruleDivider} />
-        <div className={styles.rule}>🎯 <span>Catch coins</span></div>
-        <div className={styles.ruleDivider} />
-        <div className={styles.rule}>🏆 <span>+25 XP</span></div>
+      <div className={styles.gameContent}>
+        <h2 className={styles.gameH2}>
+          VE <span className={styles.gradient}>Coin Catch</span>
+        </h2>
+        <p className={styles.gameDesc}>
+          Catch as many falling VE coins as you can in 20 seconds and win XP!
+        </p>
+        <div className={styles.gameRules}>
+          <div className={styles.gameRule}>⏱ 20 sec</div>
+          <div className={styles.gameRule}>🎯 Catch coins</div>
+          <div className={styles.gameRule}>🏆 +25 XP</div>
+        </div>
+        <button className={styles.startBtn} onClick={handleStart}>
+          ▶ Start Game
+        </button>
       </div>
-
-      <button className={styles.startBtn} onClick={handleStart}>
-        ▶ Start Game
-      </button>
-
-      <p className={styles.note}>Score 80+ to earn maximum reward</p>
     </div>
   );
 };
